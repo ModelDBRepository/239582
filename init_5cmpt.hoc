@@ -1,0 +1,39 @@
+create soma,d1,d2,d3,d4
+access soma
+
+objref dend
+dend=new SectionList()
+d1 dend.append()
+d2 dend.append()
+d3 dend.append()
+d4 dend.append()
+
+connect d1(0),1
+connect d2(0),1
+connect d3(0),0
+connect d4(0),0
+
+insert na3rp
+insert naps
+insert kdrRL
+insert mAHP
+insert gh
+insert pas
+
+forsec dend{
+insert pas
+insert L_Ca_inact
+insert gh
+}
+
+
+
+//code to set up spike counter
+objref apc,spiketimes,spikeout
+apc=new APCount(0.5)
+spiketimes=new Vector()
+spikeout=new File()
+strdef filename
+
+
+

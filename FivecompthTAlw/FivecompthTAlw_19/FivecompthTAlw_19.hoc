@@ -1,0 +1,54 @@
+//uses dpath of 700 from M1   alternative atten fact for ht (more atten)
+//modified from hTA to make parameters for last MN same as previous MN_14
+soma.diam = 26.34349
+soma.L = 3339.11357
+soma.g_pas = 0.00024157
+soma.e_pas = -71.5429
+soma.gbar_na3rp = 0.016515
+soma.gbar_naps = 2.274238e-05
+soma.sh_na3rp = 1.0
+soma.sh_naps = 5.0
+soma.ar_na3rp = 1.0
+soma.ar_naps = 1.0
+soma.gMax_kdrRL = 0.01771468
+soma.gcamax_mAHP = 7.608597e-06
+soma.gkcamax_mAHP = 0.0005314
+soma.taur_mAHP = 57.42382
+soma.ek = -80.0
+soma.Ra = 0.001
+soma.cm = 1.63945
+soma.ghbar_gh = 0.000138587
+soma.half_gh = -77.0
+forsec dend{
+L = 2029.10197
+diam = 10.45442
+g_pas = 0.000131328
+e_pas = -71.5429
+gcabar_L_Ca_inact = 0.00011183
+Ra = 45.454986
+cm = 0.874636
+ghbar_gh = 0.000138587
+half_gh = -77.0
+}
+d1.gcabar_L_Ca_inact = 0.00010292
+d2.gcabar_L_Ca_inact = 0.00011292
+d3.gcabar_L_Ca_inact = 0.00012063
+d4.gcabar_L_Ca_inact = 0.00013563
+qinf_na3rp = 8.0
+thinf_na3rp = -50.0
+vslope_naps = 5.0
+asvh_naps = -90.0
+bsvh_naps = -22.0
+mvhalfca_mAHP = -20.0
+mtauca_mAHP = 2.0
+celsius = 37.0
+theta_m_L_Ca_inact = -40.37119
+tau_m_L_Ca_inact = 40.0
+theta_h_L_Ca_inact = -0.8587000000000007
+tau_h_L_Ca_inact = 2500.0
+kappa_h_L_Ca_inact = 5.0
+htau_gh = 30.0
+mVh_kdrRL = -21.0
+tmin_kdrRL = 0.8
+taumax_kdrRL = 20.0
+V0 = 2.728999999999999

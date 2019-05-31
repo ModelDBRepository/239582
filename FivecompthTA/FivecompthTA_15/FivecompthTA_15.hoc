@@ -1,0 +1,54 @@
+//modified from cMG to be more like human MN with longer AHP lower thresh PIC
+//PIC inactivation also reduced and less skew in distribution of properties
+soma.diam = 26.986149584487535
+soma.L = 3396.3905817174514
+soma.g_pas = 0.00026531576177285326
+soma.e_pas = -71.62326869806094
+soma.gbar_na3rp = 0.0174792243767313
+soma.gbar_naps = 2.226038781163435e-05
+soma.sh_na3rp = 1.0
+soma.sh_naps = 5.0
+soma.ar_na3rp = 1.0
+soma.ar_naps = 1.0
+soma.gMax_kdrRL = 0.01811634349030471
+soma.gcamax_mAHP = 7.992701866928584e-06
+soma.gkcamax_mAHP = 0.0005434903047091413
+soma.taur_mAHP = 52.60387811634349
+soma.ek = -80.0
+soma.Ra = 0.001
+soma.cm = 1.6814731578947368
+soma.ghbar_gh = 0.00015465373961218837
+soma.half_gh = -77.0
+forsec dend{
+L = 2063.868227146814
+diam = 10.709457229916898
+g_pas = 0.0001390196731301939
+e_pas = -71.62326869806094
+gcabar_L_Ca_inact = 0.0001143213296398892
+Ra = 44.62892797783933
+cm = 0.8756503905817175
+ghbar_gh = 0.00015465373961218837
+half_gh = -77.0
+}
+d1.gcabar_L_Ca_inact = 0.00010556786703601108
+d2.gcabar_L_Ca_inact = 0.00011556786703601108
+d3.gcabar_L_Ca_inact = 0.0001236842105263158
+d4.gcabar_L_Ca_inact = 0.0001386842105263158
+qinf_na3rp = 8.0
+thinf_na3rp = -50.0
+vslope_naps = 5.0
+asvh_naps = -90.0
+bsvh_naps = -22.0
+mvhalfca_mAHP = -20.0
+mtauca_mAHP = 2.0
+celsius = 37.0
+theta_m_L_Ca_inact = -40.13019390581717
+tau_m_L_Ca_inact = 40.0
+theta_h_L_Ca_inact = -2.4653739612188375
+tau_h_L_Ca_inact = 2500.0
+kappa_h_L_Ca_inact = 5.0
+htau_gh = 30.0
+mVh_kdrRL = -21.0
+tmin_kdrRL = 0.8
+taumax_kdrRL = 20.0
+V0 = 0.5817174515235468

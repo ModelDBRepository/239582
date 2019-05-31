@@ -1,0 +1,56 @@
+//code for making a current clamp biramp
+
+{xopen("makebiramp.hoc")}
+
+objref elec
+elec= new IClamp(0.5)
+tempdur1 = 0	// for temporary storage of 
+
+tempamp1 = 0	// IClamp[0].dur and amp
+V0=0
+TR=10000
+SLOPE=0.006
+
+
+// invoke the following procedures as needed from the interpreter window
+
+
+
+// to use the ramp to drive the SEClamp
+
+proc rampon() {
+
+	tempdur1 = IClamp[0].dur
+
+	tempamp1 = IClamp[0].amp
+ 
+
+	// make sure IClamp will follow the command throughout the simulation
+
+IClamp[0].dur = TR
+
+	mycmd.play(&IClamp[0].amp,dt)
+
+	print "IClamp[0].amp is now driven by vector mycmd"
+}
+
+
+
+
+
+// to "disconnect" the ramp from the SEClamp
+
+proc rampoff() {
+
+	// restore IClamp[0].dur to previously saved value
+
+	IClamp[0].dur = tempdur1
+
+IClamp[0].amp = tempamp1
+
+	mycmd.play_remove()
+
+	print "IClamp[0].amp has been released from mycmd"
+
+}
+simple()

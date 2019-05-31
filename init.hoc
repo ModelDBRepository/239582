@@ -1,0 +1,70 @@
+xopen("init_5cmpt.hoc")
+{load_file("nrngui.hoc")}
+forsec dend{insert Gfluctdv}
+
+{load_file("SetConductances2.hoc")}
+
+//use the parameters below to recreate Figure 5 of Powers and Heckman 2017
+forsec dend {g_e0_Gfluctdv=1e-5 
+       std_e_Gfluctdv=1.2e-5
+       g_i0_Gfluctdv=1e-5 
+       std_i_Gfluctdv=1.2e-5
+       tau_e_Gfluctdv=20 
+       tau_i_Gfluctdv=20
+}
+SLOPE1=0.003
+RSTRT2=1.5
+
+simple2del()
+grampon()
+tstop=22000
+
+objref smspikes,filt,filtfile,onestsp,avrate,avrateout
+filtfile=new File()
+avrateout=new File()
+
+proc batchrunpool(){local i,ii,trun,nmn
+trun=startsw()
+nmn=$3		//number of motoneurons in pool
+simple2del()
+grampon()
+avrate=new Vector(tstop)
+for ii = 0,nmn-1 {
+sprint(filename,"Fivecompt%s/Fivecompt%s_%d/Fivecompt%s_%d.hoc",$s1,$s1,ii,$s1,ii)
+xopen(filename)
+
+forsec dend {gcabar_L_Ca_inact=$4*gcabar_L_Ca_inact}
+
+apc.record()
+apc.record(spiketimes)
+sprint(filename,"%s_%d.dat",$s2,ii)
+spikeout.wopen(filename)
+run()
+spiketimes.printf(spikeout,"%8.4f\n")
+spikeout.close()
+spike_convolve("fwave1s.txt",tstop,1001)  //changed to one second long to match De Luca
+avrate.add(smspikes)
+}
+avrate.div(nmn)
+avrateout.wopen("avrate.txt")
+avrate.printf(avrateout,"%8.4f\n")
+avrateout.close()
+print startsw()-trun, "seconds"
+}
+
+proc spike_convolve(){local ii,npnts,fnpnts,indx localobj file
+sprint(filename,$s1)
+npnts=$2
+fnpnts=$3
+filtfile.ropen(filename)
+filt=new Vector(fnpnts)
+filt.scanf(filtfile,fnpnts,1,1)
+smspikes=new Vector()
+onestsp=new Vector(npnts)
+for ii=0,spiketimes.size()-1{
+    indx=int(spiketimes.x[ii])
+    if (indx < tstop) {onestsp.x[indx]=1.0}  //just in case last spiketime == tstop
+}
+smspikes.convlv(onestsp,filt)
+smspikes.remove(npnts,smspikes.size()-1)
+}
